@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+    <insert id="insertBoard">
+        insert into Library (title, writer, publish, years, symbol, category, location, loaned)
+        values(#{title},#{writer},#{publish},#{years},#{symbol},#{category},#{location},#{loaned})
+        </insert>
+    <update id="updateBoard">
+    update Library
+    set title=#{title}, writer=#{writer}, publish=#{publish}, years=#{years},symbol=#{symbol},category=#{category},location=#{location},loaned=#{loaned}
+    where seq=#{seq}
+    </update>
+    <delete id="deleteBoard">
+        delete from Library where seq=#{seq}
+        </delete>
+    <select id="getBoard" resultType="board">
+    select * from Library where seq=#{seq}
+    </select>
+    <select id ="getBoardList" resultType="board">
+    select * from Library order by seq desc
+    </select>
+</mapper>
